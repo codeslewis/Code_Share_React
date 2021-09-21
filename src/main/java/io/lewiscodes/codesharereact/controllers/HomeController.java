@@ -1,4 +1,4 @@
-package io.lewiscodes.codesharereact.controller;
+package io.lewiscodes.codesharereact.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

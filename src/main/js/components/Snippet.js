@@ -5,7 +5,7 @@ function Snippet(props) {
 
     return (
         <div>
-            <p>{code}</p>
+            <code>{code}</code>
             <p>{lang}</p>
             <p>{date}</p>
         </div>

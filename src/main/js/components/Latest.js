@@ -3,7 +3,8 @@ import client from '../client';
 import Snippet from "./Snippet";
 
 function Latest(props) {
-    const {url} = props;
+    const url = props.location.latestByLang.url;
+    const lang = props.location.latestByLang.lang;
     const [latestSnippets, setLatestSnippets] = useState({codeSnippets: []});
 
     useEffect(() => {
@@ -12,14 +13,14 @@ function Latest(props) {
             const data = response.entity._embedded.snippets;
             setLatestSnippets({codeSnippets: data});
         });
-    }, []);
+    }, [props]);
 
     return (
         <div>
-            <h2>Latest Snippets</h2>
+            <h2>{lang} Snippets</h2>
             {latestSnippets.codeSnippets.map((s) => {
-                // console.log(s._links);
                 return <Snippet
+                    key={s._links.self.href}
                     code={s.code}
                     lang={s.lang}
                     date={s.date}

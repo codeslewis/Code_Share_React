@@ -18,6 +18,7 @@ function Recipes() {
             {recipes.codingProblems.map(recipe => {
                 return (
                     <Recipe
+                        key={recipe["title"]}
                         title={recipe["title"]}
                         description={recipe["description"]}
                         type={recipe["type"]}

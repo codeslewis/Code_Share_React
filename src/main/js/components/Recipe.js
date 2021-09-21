@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 function Recipe(props) {
     const {title, description, type, code} = props;
@@ -7,8 +8,22 @@ function Recipe(props) {
         <div className="card w-50">
             <h6 className="alert alert-primary card-header">{title}</h6>
             <code className="card-body">{description}</code>
-            <span className="card-footer">{type}</span>
-            <a href={code}><button className="btn btn-outline-primary">Code</button></a>
+            <div className="card-footer">
+                <p>{type}</p>
+                <a href={code}><button className="btn btn-outline-primary m-1">Code</button></a>
+                <Link
+                    className="btn btn-outline-primary m-1"
+                    role="button"
+                    to={{
+                        pathname: '/new',
+                        newSnippetProps : {
+                            name: `${title}`
+                        }
+                    }}
+                >
+                    New
+                </Link>
+            </div>
         </div>
     );
 }

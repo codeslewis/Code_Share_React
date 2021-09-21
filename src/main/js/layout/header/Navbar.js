@@ -15,7 +15,17 @@ function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <NavLink className="nav-link active" aria-current="page" to="/latest">Latest Snippets</NavLink>
+                                <NavLink
+                                    className="nav-link active"
+                                    aria-current="page"
+                                    to={{
+                                        pathname: '/latest',
+                                        latestByLang : {
+                                            url: "latest",
+                                            lang: "Latest"
+                                        }
+                                    }}
+                                >Latest Snippets</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link active" aria-current="page" to="/recipes">Coding Problems</NavLink>
@@ -29,7 +39,54 @@ function Navbar() {
                                     Language
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    {/*<li><NavLink className="dropdown-item" to="/java">Java</NavLink></li>*/}
+                                    <li>
+                                        <NavLink
+                                            className="dropdown-item"
+                                            to={{
+                                                pathname: '/latest',
+                                                latestByLang : {
+                                                    url: "all/Java",
+                                                    lang: "Java"
+                                                }
+                                            }}
+                                        >Java</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            className="dropdown-item"
+                                            to={{
+                                                pathname: '/latest',
+                                                latestByLang : {
+                                                    url: "all/Kotlin",
+                                                    lang: "Kotlin"
+                                                }
+                                            }}
+                                        >Kotlin</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            className="dropdown-item"
+                                            to={{
+                                                pathname: '/latest',
+                                                latestByLang : {
+                                                    url: "all/JavaScript",
+                                                    lang: "JavaScript"
+                                                }
+                                            }}
+                                        >JavaScript</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            className="dropdown-item"
+                                            to={{
+                                                pathname: '/latest',
+                                                latestByLang : {
+                                                    url: "all/Go",
+                                                    lang: "Go"
+                                                }
+                                            }}
+                                        >Go</NavLink>
+                                    </li>
                                 </ul>
                             </li>
                             <li className="nav-item">

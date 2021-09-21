@@ -1,7 +1,6 @@
 'use strict';
 
 import React, {useState, useEffect} from "react";
-import ReactDOM from 'react-dom';
 import client from './client';
 import Snippet from "./components/Snippet";
 
@@ -16,13 +15,15 @@ function App() {
     }, []);
 
     return (
-        <div>
-            <h2>react</h2>
-            <Snippet
-                code={snippet.code}
-                lang={snippet.lang}
-                date={snippet.date}
-            />
+        <div className="card">
+            <h2 className="alert alert-primary">Code Snippet</h2>
+            <div className="card-body">
+                <Snippet
+                    code={snippet.code}
+                    lang={snippet.lang}
+                    date={snippet.date}
+                />
+            </div>
         </div>
     );
 }

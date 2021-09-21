@@ -1,4 +1,4 @@
-'use strict';
+
 
 import React, {useState, useEffect} from "react";
 import client from './client';

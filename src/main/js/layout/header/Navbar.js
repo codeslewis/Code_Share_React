@@ -17,6 +17,9 @@ function Navbar() {
                             <li className="nav-item">
                                 <NavLink className="nav-link active" aria-current="page" to="/latest">Latest Snippets</NavLink>
                             </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link active" aria-current="page" to="/recipes">Coding Problems</NavLink>
+                            </li>
                             {/*<li className="nav-item">*/}
                             {/*    <a className="nav-link" href="#">Link</a>*/}
                             {/*</li>*/}

@@ -11,7 +11,7 @@ function Latest(props) {
             // setLatestSnippets(latestSnippets.concat(response.entity._embedded.snippets));
             const data = response.entity._embedded.snippets;
             setLatestSnippets({codeSnippets: data});
-        })
+        });
     }, []);
 
     return (

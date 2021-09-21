@@ -51,11 +51,27 @@ public class SnippetService implements CodeService {
     }
 
     @Override
+    public ResponseEntity<?> addRecipe(Recipe recipe) {
+        EntityModel<Recipe> entityModel = recipeAssembler.toModel(recipeRepository.save(recipe));
+        return ResponseEntity
+                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri())
+                .body(entityModel);
+    }
+
+    @Override
     public EntityModel<Snippet> getSnippet(long index) {
         Snippet snippet = snippetRepository
                 .findById(index)
                 .orElseThrow(SnippetNotFoundException::new);
         return assembler.toModel(snippet);
+    }
+
+    @Override
+    public EntityModel<Recipe> getRecipe(long index) {
+        Recipe recipe = recipeRepository
+                .findById(index)
+                .orElseThrow(SnippetNotFoundException::new);
+        return recipeAssembler.toModel(recipe);
     }
 
     @Override

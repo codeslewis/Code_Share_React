@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 
 public interface CodeService {
     ResponseEntity<?> addSnippet(Snippet snippet);
+    ResponseEntity<?> addRecipe(Recipe recipe);
     EntityModel<Snippet> getSnippet(long index);
+    EntityModel<Recipe> getRecipe(long index);
     CollectionModel<EntityModel<Snippet>> getLatest();
     CollectionModel<EntityModel<Recipe>> getAllRecipes();
     CollectionModel<EntityModel<Snippet>> allByLang(String lang);

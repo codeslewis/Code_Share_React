@@ -1,6 +1,6 @@
 package io.lewiscodes.codesharereact.models;
 
-import io.lewiscodes.codesharereact.controllers.ApiController;
+import io.lewiscodes.codesharereact.controllers.RecipeController;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
@@ -15,7 +15,7 @@ public class RecipeModelAssembler implements RepresentationModelAssembler<Recipe
     public EntityModel<Recipe> toModel(Recipe entity) {
         return EntityModel.of(
                 entity,
-                linkTo(methodOn(ApiController.class).getLatestCode()).withRel("Latest Code snippets")
+                linkTo(methodOn(RecipeController.class).getRecipe(entity.getId())).withSelfRel()
         );
     }
 

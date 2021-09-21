@@ -2,9 +2,10 @@ import React from 'react';
 import Snippet from './Snippet';
 
 function Snippets(props) {
+    const {snips} = props;
     return (
         <div>
-            {props.map((snip) => {
+            {snips.map((snip) => {
                 return (
                     <Snippet
                         code={snip.code}

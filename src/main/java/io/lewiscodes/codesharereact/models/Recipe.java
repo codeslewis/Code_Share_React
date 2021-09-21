@@ -40,6 +40,10 @@ public class Recipe {
         this.type = type;
     }
 
+    public void addSnippet(Snippet snippet) {
+        this.solutions.add(snippet);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

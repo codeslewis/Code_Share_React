@@ -7,8 +7,11 @@ function Body() {
     return (
         <>
             <Switch>
+                <Route path="/java">
+                    <Latest url="all/java"/>
+                </Route>
                 <Route path="/latest">
-                    <Latest />
+                    <Latest url="latest"/>
                 </Route>
                 <Route path="/">
                     <Snippets />

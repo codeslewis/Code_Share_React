@@ -1,9 +1,13 @@
 package io.lewiscodes.codesharereact.services;
 
 import io.lewiscodes.codesharereact.controllers.ApiController;
+import io.lewiscodes.codesharereact.controllers.RecipeController;
 import io.lewiscodes.codesharereact.exceptions.SnippetNotFoundException;
+import io.lewiscodes.codesharereact.models.Recipe;
+import io.lewiscodes.codesharereact.models.RecipeModelAssembler;
 import io.lewiscodes.codesharereact.models.Snippet;
 import io.lewiscodes.codesharereact.models.SnippetModelAssembler;
+import io.lewiscodes.codesharereact.repositories.RecipeRepository;
 import io.lewiscodes.codesharereact.repositories.SnippetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
@@ -21,14 +25,21 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @Service
 public class SnippetService implements CodeService {
     private final SnippetRepository snippetRepository;
+    private final RecipeRepository recipeRepository;
     private final SnippetModelAssembler assembler;
+    private final RecipeModelAssembler recipeAssembler;
 
+    @Autowired
     public SnippetService(
-            @Autowired SnippetRepository snippetRepository,
-            @Autowired SnippetModelAssembler assembler
+            SnippetRepository snippetRepository,
+            SnippetModelAssembler assembler,
+            RecipeRepository recipeRepository,
+            RecipeModelAssembler recipeAssembler
     ) {
         this.snippetRepository = snippetRepository;
         this.assembler = assembler;
+        this.recipeRepository = recipeRepository;
+        this.recipeAssembler = recipeAssembler;
     }
 
     @Override
@@ -68,6 +79,16 @@ public class SnippetService implements CodeService {
                 .map(assembler::toModel)
                 .collect(Collectors.toList());
         return CollectionModel.of(byLang, linkTo(methodOn(ApiController.class).getAllByLang(lang)).withSelfRel());
+    }
+
+    @Override
+    public CollectionModel<EntityModel<Recipe>> getAllRecipes() {
+        List<EntityModel<Recipe>> allRecipes = recipeRepository
+                .findAll()
+                .stream()
+                .map(recipeAssembler::toModel)
+                .collect(Collectors.toList());
+        return CollectionModel.of(allRecipes, linkTo(methodOn(RecipeController.class).all()).withSelfRel());
     }
 
     @Override

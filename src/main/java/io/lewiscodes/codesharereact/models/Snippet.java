@@ -21,6 +21,9 @@ public class Snippet implements Comparable<Snippet> {
     @Column(name = "programming_language", columnDefinition = "VARCHAR")
     private String lang;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Recipe problem;
+
     public String getLang() {
         return lang;
     }

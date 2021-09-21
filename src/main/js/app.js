@@ -1,32 +1,82 @@
 'use strict';
 
 // tag::vars[]
-const React = require('react'); // <1>
-const ReactDOM = require('react-dom'); // <2>
-const client = require('./client'); // <3>
+// React = require('react');
+// const ReactDOM = require('react-dom');
+// const client = require('./client');
+//
+// const Snippets = require('./components/Snippets');const
+import React, {useState, useEffect} from "react";
+import ReactDOM from 'react-dom';
+import client from './client';
+import Snippets from "./components/Snippets";
+import Snippet from "./components/Snippet";
 // end::vars[]
 
 // tag::app[]
-class App extends React.Component { // <1>
+function App() {
+    // const [snippets, setSnippets] = useState([]);
+    const [snippet, setSnippet] = useState({});
 
-    constructor(props) {
-        super(props);
-        // this.state = {employees: []};
-    }
 
-    componentDidMount() { // <2>
-        // client({method: 'GET', path: '/api/employees'}).done(response => {
-        //     this.setState({employees: response.entity._embedded.employeeList});
-        // });
-    }
+    useEffect(() => {
+        // client({method: 'GET', path: '/api/code/latest'}).done(response => {
+        //     setSnippets(response._embedded.snippets);
+        // })
+        client({method: 'GET', path: '/api/code/1'}).done(response => {
+            setSnippet(response.entity);
+        })
+    }, []);
 
-    render() { // <3>
-        return (
-            // <EmployeeList employees={this.state.employees}/>
-            <h2>Hey React</h2>
-        )
-    }
+    console.log(snippet.code);
+    // {console.log(snippets[0])}
+
+
+    return (
+        <div>
+            <h2>react</h2>
+            {/*<Snippets props={snippets} />*/}
+            {/*<Snippet*/}
+            {/*    code={snippet.code}*/}
+            {/*    lang={snippet.lang}*/}
+            {/*    date={snippet.date}*/}
+            {/*/>*/}
+            <Snippet
+                code={snippet.code}
+                lang={snippet.lang}
+                date={snippet.date}
+            />
+        </div>
+    );
 }
+// class App extends React.Component { // <1>
+//
+//     constructor(props) {
+//         super(props);
+//         this.state = {snippets: []};
+//     }
+//
+//     componentDidMount() { // <2>
+//         // client({method: 'GET', path: '/api/employees'}).done(response => {
+//         //     this.setState({employees: response.entity._embedded.employeeList});
+//         // });
+//         client({method: 'GET', path: '/api/code/latest'}).done(response => {
+//             this.setState({snippets: response.entity._embedded.snippets});
+//         });
+//
+//     }
+//
+//     render() { // <3>
+//         return (
+//             // <EmployeeList employees={this.state.employees}/>
+//             <div>
+//                 <h2>react</h2>
+//                 {console.log(this.state.snippets)}
+//                 <Snippets props={this.state.snippets} />
+//             </div>
+//         )
+//     }
+// }
 // end::app[]
 
 // tag::employee-list[]

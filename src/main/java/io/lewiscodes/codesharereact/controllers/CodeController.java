@@ -9,10 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class ApiController {
+public class CodeController {
     CodeService snippetService;
 
-    public ApiController(
+    public CodeController(
             @Autowired CodeService snippetService
     ) {
         this.snippetService = snippetService;
@@ -38,9 +38,14 @@ public class ApiController {
         return snippetService.allByLang(lang);
     }
 
-    @PostMapping(path = "api/code/new", consumes = "application/json")
-    public ResponseEntity<?> create(@RequestBody Snippet code) {
-        return snippetService.addSnippet(code);
+    @GetMapping("api/code/recipe/all/{recipeId}")
+    public CollectionModel<EntityModel<Snippet>> getAllByRecipe(@PathVariable long recipeId) {
+        return snippetService.allByRecipe(recipeId);
+    }
+
+    @PostMapping(path = "api/code/new/{recipeId}/{userId}", consumes = "application/json")
+    public ResponseEntity<?> create(@RequestBody Snippet code, @PathVariable long recipeId, @PathVariable long userId) {
+        return snippetService.addSnippet(code, recipeId, userId);
     }
 
     @DeleteMapping("api/code/droptable")

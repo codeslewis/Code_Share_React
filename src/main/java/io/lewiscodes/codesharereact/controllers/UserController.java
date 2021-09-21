@@ -1,7 +1,8 @@
 package io.lewiscodes.codesharereact.controllers;
 
 import io.lewiscodes.codesharereact.models.User;
-import io.lewiscodes.codesharereact.services.UserService;
+import io.lewiscodes.codesharereact.services.CodeService;
+import io.lewiscodes.codesharereact.services.SnippetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
@@ -10,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UserController {
 
-    private final UserService service;
+    private final CodeService service;
 
-    public UserController(@Autowired UserService service) {
+    public UserController(@Autowired SnippetService service) {
         this.service = service;
     }
 

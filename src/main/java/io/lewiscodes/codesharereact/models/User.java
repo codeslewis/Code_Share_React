@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "APPLICATION_USER")
@@ -19,6 +20,9 @@ public class User {
     @Column(name = "password", columnDefinition = "VARCHAR")
     @JsonIgnore
     private String password;
+
+    @OneToMany
+    private List<Snippet> code;
 
     public User() {}
 

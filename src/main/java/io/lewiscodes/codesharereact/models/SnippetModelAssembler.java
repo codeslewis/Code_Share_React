@@ -1,6 +1,6 @@
 package io.lewiscodes.codesharereact.models;
 
-import io.lewiscodes.codesharereact.controllers.ApiController;
+import io.lewiscodes.codesharereact.controllers.CodeController;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
@@ -15,9 +15,9 @@ public class SnippetModelAssembler implements RepresentationModelAssembler<Snipp
     public EntityModel<Snippet> toModel(Snippet entity) {
         return EntityModel.of(
                 entity,
-                linkTo(methodOn(ApiController.class).getCode(entity.getId())).withSelfRel(),
-                linkTo(methodOn(ApiController.class).getAllByLang(entity.getLang())).withRel("All Code in this Language"),
-                linkTo(methodOn(ApiController.class).getLatestCode()).withRel("Latest Code snippets")
+                linkTo(methodOn(CodeController.class).getCode(entity.getId())).withSelfRel(),
+                linkTo(methodOn(CodeController.class).getAllByLang(entity.getLang())).withRel("All Code in this Language"),
+                linkTo(methodOn(CodeController.class).getLatestCode()).withRel("Latest Code snippets")
         );
     }
 

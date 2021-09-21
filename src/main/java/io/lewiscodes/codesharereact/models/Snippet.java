@@ -1,6 +1,8 @@
 package io.lewiscodes.codesharereact.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -8,6 +10,8 @@ import java.time.format.DateTimeFormatter;
 
 @Entity(name = "snippets")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Getter
+@Setter
 public class Snippet implements Comparable<Snippet> {
     @Id
     @Column(name = "id", columnDefinition = "BIGINT")
@@ -24,21 +28,8 @@ public class Snippet implements Comparable<Snippet> {
     @ManyToOne(fetch = FetchType.EAGER)
     private Recipe problem;
 
-    public String getLang() {
-        return lang;
-    }
-
-    public void setLang(String lang) {
-        this.lang = lang;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @ManyToOne(fetch = FetchType.EAGER)
+    private User owner;
 
     public Snippet(String code) {
         this.code = code;

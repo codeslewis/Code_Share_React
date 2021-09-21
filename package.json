@@ -14,6 +14,9 @@
   },
   "homepage": "https://github.com/codeslewis/Code_Share_React#readme",
   "dependencies": {
+    "bootstrap": "^5.0.2",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "rest": "^1.3.1"

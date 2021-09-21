@@ -27,7 +27,8 @@ function App() {
     );
 }
 
-ReactDOM.render(
-    <App />,
-    document.getElementById('react')
-)
+export default App;
+// ReactDOM.render(
+//     <App />,
+//     document.getElementById('react')
+// )

@@ -1,12 +1,15 @@
 import React from "react";
 import {NavLink, BrowserRouter} from "react-router-dom";
+import NavBrand from "./nav-components/NavBrand";
+import DropMenu from "./nav-components/DropMenu";
+import RecipeMenu from "./nav-components/RecipeMenu";
 
 function Navbar() {
 
     return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
-                    <NavLink className="navbar-brand" to="/">Code Share</NavLink>
+                    <NavBrand />
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -20,83 +23,18 @@ function Navbar() {
                                     aria-current="page"
                                     to={{
                                         pathname: '/latest',
-                                        latestByLang : {
+                                        latestByLang: {
                                             url: "latest",
                                             lang: "Latest"
                                         }
                                     }}
                                 >Latest Snippets</NavLink>
                             </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link active" aria-current="page" to="/recipes">Coding Problems</NavLink>
-                            </li>
-                            {/*<li className="nav-item">*/}
-                            {/*    <a className="nav-link" href="#">Link</a>*/}
-                            {/*</li>*/}
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                   data-bs-toggle="dropdown" aria-expanded="false">
-                                    Language
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li>
-                                        <NavLink
-                                            className="dropdown-item"
-                                            to={{
-                                                pathname: '/latest',
-                                                latestByLang : {
-                                                    url: "all/Java",
-                                                    lang: "Java"
-                                                }
-                                            }}
-                                        >Java</NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink
-                                            className="dropdown-item"
-                                            to={{
-                                                pathname: '/latest',
-                                                latestByLang : {
-                                                    url: "all/Kotlin",
-                                                    lang: "Kotlin"
-                                                }
-                                            }}
-                                        >Kotlin</NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink
-                                            className="dropdown-item"
-                                            to={{
-                                                pathname: '/latest',
-                                                latestByLang : {
-                                                    url: "all/JavaScript",
-                                                    lang: "JavaScript"
-                                                }
-                                            }}
-                                        >JavaScript</NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink
-                                            className="dropdown-item"
-                                            to={{
-                                                pathname: '/latest',
-                                                latestByLang : {
-                                                    url: "all/Go",
-                                                    lang: "Go"
-                                                }
-                                            }}
-                                        >Go</NavLink>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Disabled</a>
-                            </li>
+                            <RecipeMenu />
+                            <DropMenu />
+
                         </ul>
-                        <form className="d-flex">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="submit">Search</button>
-                        </form>
+
                     </div>
                 </div>
             </nav>

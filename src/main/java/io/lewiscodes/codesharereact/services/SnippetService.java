@@ -48,10 +48,10 @@ public class SnippetService implements CodeService {
 
     @Override
     public ResponseEntity<?> addSnippet(Snippet snippet, long recipeId, long userId) {
-        Recipe recipe = recipeRepository.findById(recipeId).orElseThrow(EntityNotFoundException::new);
-        User user = userRepository.findById(userId).orElseThrow(EntityNotFoundException::new);
-        snippet.setProblem(recipe);
-        snippet.setOwner(user);
+//        Recipe recipe = recipeRepository.findById(recipeId).orElseThrow(EntityNotFoundException::new);
+//        User user = userRepository.findById(userId).orElseThrow(EntityNotFoundException::new);
+//        snippet.setProblem(recipe);
+//        snippet.setOwner(user);
         EntityModel<Snippet> entityModel = assembler.toModel(snippetRepository.save(snippet));
         return ResponseEntity
                 .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri())

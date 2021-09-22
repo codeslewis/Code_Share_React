@@ -2,7 +2,7 @@ import React from 'react';
 
 function LoginPage() {
     return (
-        <H3>Login Page</H3>
+        <h3>Login Page</h3>
     );
 }
 

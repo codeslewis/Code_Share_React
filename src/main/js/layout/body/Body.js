@@ -4,7 +4,7 @@ import Snippets from '../../components/Snippets';
 import Latest from "../../components/Latest";
 import Recipes from "../../components/Recipes";
 import NewSnippet from "../../components/NewSnippet";
-import ErrorPage from "../../components/ErrorPage";
+import ErrorPage from "../../pages/ErrorPage";
 
 function Body() {
     return (

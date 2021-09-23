@@ -1,6 +1,7 @@
 package io.lewiscodes.codesharereact;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +18,8 @@ class CodeShareReactApplicationTests {
     private MockMvc mockMvc;
 
     @Test
-    void getLatestStatus() throws Exception {
+    @DisplayName("Get latest snippets returns status 200")
+    void getLatest() throws Exception {
         this.mockMvc.perform(get("/api/code/latest")).andExpect(status().isOk());
     }
 

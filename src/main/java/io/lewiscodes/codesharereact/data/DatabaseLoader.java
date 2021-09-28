@@ -27,7 +27,7 @@ public class DatabaseLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        User user = new User("bob@gmail.com", "supersecretpassword");
+        User user = new User(1L, "bob@gmail.com", "supersecretpassword", true, "ROLE_USER");
         userRepository.save(user);
         Recipe recipe = new Recipe("Hello, world", "A first program to get started coding in a new language", "Basic");
         recipeRepository.save(recipe);

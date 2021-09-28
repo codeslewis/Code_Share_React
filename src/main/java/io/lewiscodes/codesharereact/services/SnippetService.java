@@ -12,6 +12,7 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -92,7 +93,7 @@ public class SnippetService implements CodeService {
 
     @Override
     public EntityModel<User> findByEmail(String email) {
-        return userAssembler.toModel(userRepository.findByEmail(email));
+        return userAssembler.toModel(userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User not found")));
     }
 
     @Override
